@@ -1,0 +1,40 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:AvaloniaMLImageClassifier.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="AvaloniaMLImageClassifier.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="AvaloniaMLImageClassifier">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="300"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+
+        </Grid.RowDefinitions>
+        <Image Source="{Binding DisplayImagePath}">
+            
+        </Image>
+        <StackPanel Grid.Column="2" Grid.RowSpan="2" Background="Red">
+            <TextBlock TextWrapping="WrapWithOverflow" Margin="3" Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </StackPanel>
+        <StackPanel  Grid.ColumnSpan="2" Grid.Row="1" Background="Red" Orientation="Horizontal">
+            <Button Margin="10" Content="Load Picture" Click="Button_OnClick"/>
+            <Button Content="Attempt Classification" Command="{Binding ClassifyImage}"/>
+            <TextBlock Text="{Binding PathName}"></TextBlock>
+        </StackPanel>
+        
+
+    </Grid>
+
+</Window>
